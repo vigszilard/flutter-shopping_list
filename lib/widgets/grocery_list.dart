@@ -45,6 +45,27 @@ class _GroceryListState extends State<GroceryList> {
         itemCount: _groceryItems.length,
         itemBuilder: (ctx, index) => Dismissible(
           key: ValueKey(_groceryItems[index].id),
+          direction: DismissDirection.endToStart,
+          background: Container(
+            color: Colors.red,
+            child: const Stack(
+              children: [
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 20.0),
+                    child: Text(
+                      'Delete',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
           onDismissed: (direction) {
             _removeItem(_groceryItems[index]);
           },
